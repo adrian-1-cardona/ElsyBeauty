@@ -1,0 +1,1213 @@
+/* ========================================
+   Elsy Beauty - Styles
+   ======================================== */
+
+:root {
+    --olive: #6B7B4C;
+    --olive-dark: #5A6840;
+    --cream: #F5F0E8;
+    --cream-light: #FAF8F4;
+    --tan: #D4C8B8;
+    --brown-dark: #2D2A26;
+    --brown-text: #3D3A36;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--brown-text);
+    line-height: 1.6;
+    background-color: var(--cream-light);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+/* Hero fade - animates immediately on page load */
+.hero-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeIn 1s ease-out forwards;
+}
+
+.hero-fade.stagger-1 {
+    animation-delay: 0.2s;
+}
+
+.hero-fade.stagger-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes heroFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll-triggered fade animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.stagger-1 { transition-delay: 0.15s; }
+.stagger-2 { transition-delay: 0.3s; }
+.stagger-3 { transition-delay: 0.45s; }
+.stagger-4 { transition-delay: 0.6s; }
+
+/* Fallback: if JS doesn't load after 3 seconds, show content */
+@keyframes showFallback {
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fade-in,
+.fade-in-left,
+.fade-in-right,
+.fade-in-scale {
+    animation: showFallback 0s 3s forwards;
+}
+
+/* ========================================
+   Header & Logo
+   ======================================== */
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--brown-dark);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+    background-color: var(--cream);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--brown-dark);
+}
+
+.hero h1::after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 2px;
+    background-color: var(--brown-dark);
+    margin-top: 1.5rem;
+}
+
+.hero p {
+    font-size: 1rem;
+    color: var(--brown-text);
+    margin-bottom: 2.5rem;
+    max-width: 340px;
+}
+
+.hero-image {
+    background: linear-gradient(135deg, var(--tan) 0%, var(--cream) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.02);
+}
+
+/* ========================================
+   Booking Buttons
+   ======================================== */
+
+.booking-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
+    border: 1px solid var(--brown-dark);
+    background: transparent;
+    color: var(--brown-dark);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.btn:hover {
+    background: var(--brown-dark);
+    color: var(--cream);
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover svg {
+    transform: scale(1.1);
+}
+
+.btn-primary {
+    background: var(--olive);
+    border-color: var(--olive);
+    color: var(--cream);
+}
+
+.btn-primary:hover {
+    background: var(--olive-dark);
+    border-color: var(--olive-dark);
+}
+
+/* ========================================
+   Steady Care Section
+   ======================================== */
+
+.steady-care {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+}
+
+.steady-care-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    background-color: var(--cream-light);
+}
+
+.steady-care-content h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--brown-dark);
+    margin-bottom: 1.5rem;
+}
+
+.steady-care-content h2::after {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 2px;
+    background-color: var(--brown-dark);
+    margin-top: 1rem;
+}
+
+.steady-care-content p {
+    font-size: 0.95rem;
+    max-width: 320px;
+}
+
+.steady-care-image {
+    background-color: var(--olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    overflow: hidden;
+}
+
+.steady-care-image img {
+    max-width: 70%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.steady-care-image:hover img {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+}
+
+/* ========================================
+   Spa Hallmarks
+   ======================================== */
+
+.spa-hallmarks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+}
+
+.hallmarks-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.hallmarks-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.hallmarks-image:hover img {
+    transform: scale(1.03);
+}
+
+.hallmarks-content {
+    background-color: var(--olive);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    color: var(--brown-dark);
+}
+
+.hallmarks-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.hallmarks-content h2::after {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 2px;
+    background-color: var(--brown-dark);
+    margin-top: 1rem;
+}
+
+.hallmarks-list {
+    list-style: none;
+}
+
+.hallmarks-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(45, 42, 38, 0.3);
+    font-size: 0.95rem;
+    transition: padding-left 0.3s ease;
+}
+
+.hallmarks-list li:hover {
+    padding-left: 0.5rem;
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    background-color: var(--cream-light);
+}
+
+.about-content {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.about-content p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 380px;
+}
+
+.about-image {
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.03);
+}
+
+/* ========================================
+   Signature Experiences
+   ======================================== */
+
+.signature-experiences {
+    background-color: var(--olive);
+    padding: 5rem 4rem;
+    text-align: center;
+}
+
+.signature-experiences h2 {
+    font-size: 2.8rem;
+    color: var(--cream);
+    margin-bottom: 3rem;
+}
+
+.experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.experience-card {
+    text-align: left;
+    transition: transform 0.4s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+}
+
+.experience-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.4s ease;
+}
+
+.experience-card:hover img {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.experience-card h3 {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+}
+
+.experience-card p {
+    font-size: 0.85rem;
+    color: var(--cream);
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* ========================================
+   Treatments Section
+   ======================================== */
+
+.treatments {
+    padding: 5rem 4rem;
+    background-color: var(--cream-light);
+}
+
+.treatments h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.treatment-category {
+    margin-bottom: 4rem;
+}
+
+.treatment-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--brown-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.treatment-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--tan);
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.treatment-item:hover {
+    background-color: rgba(107, 123, 76, 0.05);
+    padding-left: 1rem;
+}
+
+.treatment-name h4 {
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.treatment-name p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.treatment-duration,
+.treatment-price {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+/* Olive Treatment Section */
+.treatments-olive {
+    background-color: var(--olive);
+    padding: 5rem 4rem;
+}
+
+.treatments-olive .treatment-category {
+    color: var(--cream);
+}
+
+.treatments-olive .treatment-header {
+    border-bottom-color: var(--cream);
+    color: var(--cream);
+}
+
+.treatments-olive .treatment-item {
+    border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.treatments-olive .treatment-item:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.treatments-olive .treatment-name h4 {
+    color: var(--cream);
+}
+
+.treatments-olive .treatment-name p {
+    color: rgba(255,255,255,0.7);
+}
+
+.treatments-olive .treatment-duration,
+.treatments-olive .treatment-price {
+    color: var(--cream);
+}
+
+/* ========================================
+   Testimonials
+   ======================================== */
+
+.testimonials {
+    background-color: var(--olive);
+    padding: 5rem 4rem;
+}
+
+.testimonials h2 {
+    font-size: 2.8rem;
+    color: var(--cream);
+    margin-bottom: 3rem;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--cream);
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.15);
+}
+
+.stars {
+    color: #C9A962;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.testimonial-card blockquote {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.testimonial-card cite {
+    font-style: normal;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   Spa Moments Gallery
+   ======================================== */
+
+.spa-moments {
+    padding: 5rem 4rem;
+    background-color: var(--cream-light);
+}
+
+.spa-moments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--brown-dark);
+    padding-bottom: 1rem;
+}
+
+.spa-moments h2 {
+    font-size: 2.5rem;
+}
+
+.spa-moments-header span {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.moments-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.moments-grid img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+    background-color: var(--olive);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+    color: var(--cream);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+}
+
+.footer-logo svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--cream);
+}
+
+.footer-address p {
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer-contact strong {
+    font-weight: 500;
+}
+
+.footer-social h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: var(--cream);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--cream);
+    color: var(--olive);
+    border-color: var(--cream);
+    transform: translateY(-3px);
+}
+
+.social-links svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 1200px) {
+    footer {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .experiences-grid {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero,
+    .steady-care,
+    .spa-hallmarks,
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-image {
+        min-height: 50vh;
+        order: -1;
+    }
+    
+    .hero-content {
+        padding: 4rem 3rem;
+    }
+
+    .experiences-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .moments-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .steady-care-image {
+        min-height: 50vh;
+    }
+    
+    .hallmarks-image {
+        min-height: 50vh;
+        order: -1;
+    }
+    
+    .about-image {
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .hero-content {
+        padding: 3rem 1.5rem;
+    }
+    
+    .steady-care-content,
+    .hallmarks-content,
+    .about-content {
+        padding: 3rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero h1::after {
+        width: 120px;
+        margin-top: 1rem;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .treatments,
+    .treatments-olive,
+    .testimonials,
+    .spa-moments,
+    .signature-experiences {
+        padding: 3rem 1.5rem;
+    }
+    
+    .treatments h2,
+    .signature-experiences h2,
+    .testimonials h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .treatment-header,
+    .treatment-item {
+        grid-template-columns: 2fr 1fr 1fr;
+        font-size: 0.85rem;
+    }
+
+    .experiences-grid,
+    .testimonials-grid,
+    .moments-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .experience-card img {
+        height: 220px;
+    }
+    
+    .experience-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .booking-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        min-height: 52px;
+    }
+    
+    .btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .footer-logo {
+        justify-content: center;
+        font-size: 1.75rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+    
+    .social-links a {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .steady-care-content h2,
+    .hallmarks-content h2,
+    .about-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .steady-care-content h2::after,
+    .hallmarks-content h2::after {
+        width: 120px;
+    }
+    
+    .steady-care-image img {
+        max-width: 85%;
+    }
+    
+    .spa-moments-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .spa-moments h2 {
+        font-size: 2rem;
+    }
+    
+    .moments-grid img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+    
+    .hero-content {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .steady-care-content h2,
+    .hallmarks-content h2,
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .steady-care-content,
+    .hallmarks-content,
+    .about-content {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .steady-care-content p,
+    .about-content p {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+    
+    .hallmarks-list li {
+        font-size: 0.9rem;
+        padding: 0.75rem 0;
+    }
+
+    .treatment-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1.25rem 0;
+    }
+
+    .treatment-header {
+        display: none;
+    }
+    
+    .treatment-name h4 {
+        font-size: 1rem;
+    }
+    
+    .treatment-name p {
+        font-size: 0.8rem;
+    }
+
+    .treatment-duration,
+    .treatment-price {
+        font-size: 0.85rem;
+        display: inline-block;
+    }
+    
+    .treatment-duration::after {
+        content: ' | ';
+    }
+    
+    .treatments,
+    .treatments-olive {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .treatments h2 {
+        font-size: 1.8rem;
+    }
+    
+    .signature-experiences,
+    .testimonials,
+    .spa-moments {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .signature-experiences h2,
+    .testimonials h2 {
+        font-size: 1.8rem;
+    }
+    
+    .experience-card img {
+        height: 200px;
+    }
+    
+    .experience-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .experience-card p {
+        font-size: 0.85rem;
+    }
+    
+    .testimonial-card blockquote {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.25rem;
+    }
+    
+    footer {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-logo svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .footer-address p,
+    .footer-contact p {
+        font-size: 0.9rem;
+    }
+    
+    .footer-social h4 {
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover {
+        background: transparent;
+        color: var(--brown-dark);
+    }
+    
+    .btn-primary:hover {
+        background: var(--olive);
+        color: var(--cream);
+    }
+    
+    .btn:active {
+        background: var(--brown-dark);
+        color: var(--cream);
+        transform: scale(0.98);
+    }
+    
+    .btn-primary:active {
+        background: var(--olive-dark);
+        transform: scale(0.98);
+    }
+    
+    .social-links a:hover {
+        background: transparent;
+        color: var(--cream);
+        transform: none;
+    }
+    
+    .social-links a:active {
+        background: var(--cream);
+        color: var(--olive);
+        transform: scale(0.95);
+    }
+    
+    .experience-card:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+    
+    .hero-image:hover img,
+    .hallmarks-image:hover img,
+    .about-image:hover img {
+        transform: none;
+    }
+}
+
+/* Landscape phone orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+    }
+    
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-image {
+        min-height: 300px;
+    }
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+    header {
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+    
+    .hero-content,
+    .steady-care-content,
+    .hallmarks-content,
+    .about-content,
+    .treatments,
+    .treatments-olive,
+    .signature-experiences,
+    .testimonials,
+    .spa-moments,
+    footer {
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+}
